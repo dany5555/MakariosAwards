@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "258328634249",
+    "firebase_url": "https://makariosawards.firebaseio.com",
+    "project_id": "makariosawards",
+    "storage_bucket": "makariosawards.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258328634249:android:3f58c3f625ec8f5c",
+        "android_client_info": {
+          "package_name": "com.makariosawards"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "258328634249-aat2fjkp5bllt2h7bq00i3jr7iklmkr8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.makariosawards",
+            "certificate_hash": "4d73e30282b33ad72a316403e24055aa188ff30a"
+          }
+        },
+        {
+          "client_id": "258328634249-1af9r2sgd4qfqfg4bsd6n7lfh79j7d7s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxwLZ304KsFU4Mse8-nyO-pDpe6Q9pKpM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "258328634249-1af9r2sgd4qfqfg4bsd6n7lfh79j7d7s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

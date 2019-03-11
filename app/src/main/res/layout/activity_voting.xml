@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VotingActivity">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/makarios_logo" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="AWARDS"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="395dp"
+        android:layout_height="527dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6">
+
+        <RelativeLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/category_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is category 1"/>
+
+            <Spinner
+                android:id="@+id/category_1_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_1"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/category_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is category 2"
+                android:layout_below="@id/category_1_spinner"/>
+
+            <Spinner
+                android:id="@+id/category_2_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_2"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/category_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is category 3"
+                android:layout_below="@id/category_2_spinner"/>
+
+            <Spinner
+                android:id="@+id/category_3_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_3"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/category_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is category 4"
+                android:layout_below="@id/category_3_spinner"/>
+
+            <Spinner
+                android:id="@+id/category_4_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_4"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/category_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is category 5"
+                android:layout_below="@id/category_4_spinner"/>
+
+            <Spinner
+                android:id="@+id/category_5_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_5"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/category_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is category 6"
+                android:layout_below="@id/category_5_spinner"/>
+
+            <Spinner
+                android:id="@+id/category_6_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_6"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/category_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is category 7"
+                android:layout_below="@id/category_6_spinner"/>
+
+            <Spinner
+                android:id="@+id/category_7_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_7"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/category_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is category 8"
+                android:layout_below="@id/category_7_spinner"/>
+
+            <Spinner
+                android:id="@+id/category_8_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_8"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/category_9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is category 9"
+                android:layout_below="@id/category_8_spinner"/>
+
+            <Spinner
+                android:id="@+id/category_9_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_9"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/category_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is category 10"
+                android:layout_below="@id/category_9_spinner"/>
+
+            <Spinner
+                android:id="@+id/category_10_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_10"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/category_11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is category 11"
+                android:layout_below="@id/category_10_spinner"/>
+
+            <Spinner
+                android:id="@+id/category_11_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_11"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/category_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is category 12"
+                android:layout_below="@id/category_11_spinner"/>
+
+            <Spinner
+                android:id="@+id/category_12_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_12"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/category_13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is category 13"
+                android:layout_below="@id/category_12_spinner"/>
+
+            <Spinner
+                android:id="@+id/category_13_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_13"
+                android:layout_marginTop="16dp"/>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+</android.support.constraint.ConstraintLayout>
