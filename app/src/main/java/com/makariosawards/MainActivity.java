@@ -14,33 +14,68 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText emailEditText, passwordEditText;
-    Button loginButton;
+    //EditText emailEditText, passwordEditText;
+    //Button loginButton;
+    EditText idEditText;
+    Button submitButton;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    FirebaseAuth firebaseAuth;
-    DatabaseReference ref;
+    //FirebaseAuth firebaseAuth;
+    DatabaseReference ref = database.getReference("Nominees");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_alternate);
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        //firebaseAuth = FirebaseAuth.getInstance();
 
-        emailEditText = findViewById(R.id.email_editText);
-        passwordEditText = findViewById(R.id.password_editText);
-        loginButton = findViewById(R.id.login_button);
+        //emailEditText = findViewById(R.id.email_editText);
+        //passwordEditText = findViewById(R.id.password_editText);
+        //loginButton = findViewById(R.id.login_button);
+        idEditText = findViewById(R.id.id_edittext);
+        submitButton = findViewById(R.id.submitButton);
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String id = idEditText.getText().toString();
+
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.hasChild(id)) {
+                            Toast.makeText(getApplicationContext(), "Yay, it's here!", Toast.LENGTH_SHORT).show();
+                            // Go to home activity and save id to display name of person that is voting and keep track of their votes.
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Nope", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
+
+            }
+        });
 
 
 
 
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        /*loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -72,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-        });
+        });*/
 
 
 
