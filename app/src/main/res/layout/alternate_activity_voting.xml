@@ -13,133 +13,14 @@
         android:layout_marginTop="16dp"
         app:srcCompat="@drawable/makarios_logo" />
 
-    <ScrollView
+    <ListView
+        android:id="@+id/category_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/makarios_logo"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
-        android:scrollIndicators="none"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="0dp">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    </ListView>
 
-            <Button
-                android:id="@+id/category1_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Best Directiva Member" />
 
-            <Button
-                android:id="@+id/category2_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/category1_button"
-                android:layout_marginTop="8dp"
-                android:text="Best Gringo" />
-
-            <Button
-                android:id="@+id/category3_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/category2_button"
-                android:layout_marginTop="8dp"
-                android:text="Best Smile" />
-
-            <Button
-                android:id="@+id/category4_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/category3_button"
-                android:layout_marginTop="8dp"
-                android:text="First in Line for Potluck" />
-
-            <Button
-                android:id="@+id/category5_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/category4_button"
-                android:layout_marginTop="8dp"
-                android:text="Kindest" />
-
-            <Button
-                android:id="@+id/category6_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/category5_button"
-                android:layout_marginTop="8dp"
-                android:text="Laziest person in Drama" />
-
-            <Button
-                android:id="@+id/category7_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/category6_button"
-                android:layout_marginTop="8dp"
-                android:text="Laziest Person in Music" />
-
-            <Button
-                android:id="@+id/category8_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/category7_button"
-                android:layout_marginTop="8dp"
-                android:text="Laziest Person in Poetry" />
-
-            <Button
-                android:id="@+id/category9_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/category8_button"
-                android:layout_marginTop="8dp"
-                android:text="Loudest Laugh" />
-
-            <Button
-                android:id="@+id/category10_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/category9_button"
-                android:layout_marginTop="8dp"
-                android:text="Most Dramatic" />
-
-            <Button
-                android:id="@+id/category11_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/category10_button"
-                android:layout_marginTop="8dp"
-                android:text="Most Passionate" />
-
-            <Button
-                android:id="@+id/category12_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/category11_button"
-                android:layout_marginTop="8dp"
-                android:text="Most Punctual" />
-
-            <Button
-                android:id="@+id/category13_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/category12_button"
-                android:layout_marginTop="8dp"
-                android:text="Quietest" />
-
-            <Button
-                android:id="@+id/category14_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/category13_button"
-                android:layout_marginTop="8dp"
-                android:text="Sleepiest" />
-
-        </RelativeLayout>
-
-    </ScrollView>
 
 
 </RelativeLayout>

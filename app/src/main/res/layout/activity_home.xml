@@ -49,4 +49,16 @@
         app:layout_constraintEnd_toEndOf="@+id/nominees_button"
         app:layout_constraintStart_toStartOf="@+id/nominees_button"
         app:layout_constraintTop_toBottomOf="@+id/nominees_button" />
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:text="Welcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vote_button" />
 </android.support.constraint.ConstraintLayout>

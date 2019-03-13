@@ -54,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
                         if (dataSnapshot.hasChild(id)) {
                             Toast.makeText(getApplicationContext(), "Yay, it's here!", Toast.LENGTH_SHORT).show();
                             // Go to home activity and save id to display name of person that is voting and keep track of their votes.
+
+                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                            intent.putExtra("id", id);
+                            startActivity(intent);
                         } else {
                             Toast.makeText(getApplicationContext(), "Nope", Toast.LENGTH_SHORT).show();
                         }
