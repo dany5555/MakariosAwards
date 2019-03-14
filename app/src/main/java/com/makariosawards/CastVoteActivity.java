@@ -56,7 +56,18 @@ public class CastVoteActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 currentVote = dataSnapshot.getValue().toString();
-                Log.e("currentVote", "current vote is " + currentVote);
+                Log.e("currentVote", "first current vote is " + currentVote);
+
+                if (TextUtils.equals(currentVote, "none")) {
+                    castVoteButton.setEnabled(true);
+                    changeVoteButton.setEnabled(false);
+                    gridView.setEnabled(true);
+                } else {
+                    castVoteButton.setEnabled(false);
+                    changeVoteButton.setEnabled(true);
+                    gridView.setEnabled(false);
+                    //votingFor.setText("Voted for " + currentVote);
+                }
             }
 
             @Override
@@ -65,16 +76,9 @@ public class CastVoteActivity extends AppCompatActivity {
             }
         });
 
-        if (TextUtils.equals(currentVote, "none")) {
-            castVoteButton.setEnabled(true);
-            changeVoteButton.setEnabled(false);
-            gridView.setEnabled(true);
-        } else {
-            castVoteButton.setEnabled(false);
-            changeVoteButton.setEnabled(true);
-            gridView.setEnabled(false);
-            //votingFor.setText("Voted for " + currentVote);
-        }
+        Log.e("currentVote", "second current vote is " + currentVote);
+
+
 
         categoriesRef.child(categoryName).child("Nominees").addValueEventListener(new ValueEventListener() {
             @Override
