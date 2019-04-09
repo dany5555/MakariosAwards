@@ -48,26 +48,32 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final String id = idEditText.getText().toString();
 
-                ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChild(id)) {
-                            Toast.makeText(getApplicationContext(), "Yay, it's here!", Toast.LENGTH_SHORT).show();
-                            // Go to home activity and save id to display name of person that is voting and keep track of their votes.
+                if (TextUtils.isEmpty(id)) {
+                    Toast.makeText(getApplicationContext(), "Please enter your voterID", Toast.LENGTH_SHORT).show();
+                } else {
+                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.hasChild(id)) {
+                                Toast.makeText(getApplicationContext(), "You have successfully logged in", Toast.LENGTH_SHORT).show();
+                                // Go to home activity and save id to display name of person that is voting and keep track of their votes.
 
-                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                            intent.putExtra("id", id);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Nope", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                intent.putExtra("id", id);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Please enter a valid voterID", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
-                });
+                        }
+                    });
+                }
+
+
 
 
 

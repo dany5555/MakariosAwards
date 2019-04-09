@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +28,7 @@ public class CastVoteActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference categoriesRef = database.getReference("Categories");
     DatabaseReference votersRef = database.getReference("Voters");
+    DatabaseReference nomineesRef = database.getReference("Nominees");
     String categoryName, nomineeUid;
     String currentVote;
     //String votedFor;
@@ -62,10 +64,23 @@ public class CastVoteActivity extends AppCompatActivity {
                     castVoteButton.setEnabled(true);
                     changeVoteButton.setEnabled(false);
                     gridView.setEnabled(true);
+                    votingFor.setText("Select nominee above");
                 } else {
                     castVoteButton.setEnabled(false);
                     changeVoteButton.setEnabled(true);
                     gridView.setEnabled(false);
+
+                    nomineesRef.child(currentVote).child("fullName").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            votingFor.setText("You voted for " + dataSnapshot.getValue().toString());
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                     //votingFor.setText("Voted for " + currentVote);
                 }
             }
@@ -120,29 +135,36 @@ public class CastVoteActivity extends AppCompatActivity {
         castVoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                categoriesRef.child(categoryName).child("Nominees").child(currentVote).child("votes").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        int votes = Integer.valueOf(dataSnapshot.getValue().toString());
-                        votes += 1;
-                        categoriesRef.child(categoryName).child("Nominees").child(currentVote).child("votes").setValue(votes);
-
-                        castVoteButton.setEnabled(false);
-                        changeVoteButton.setEnabled(true);
-                        gridView.setEnabled(false);
-
-                        votingFor.setText("Voted for " + currentVote);
+                if(TextUtils.equals(currentVote, "none")) {
+                    // Tell the user to select a nominee from the list
+                    Toast.makeText(getApplicationContext(), "Please select a nominee from the list above", Toast.LENGTH_SHORT).show();
+                } else {
 
 
-                    }
+                    categoriesRef.child(categoryName).child("Nominees").child(currentVote).child("votes").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            int votes = Integer.valueOf(dataSnapshot.getValue().toString());
+                            votes += 1;
+                            categoriesRef.child(categoryName).child("Nominees").child(currentVote).child("votes").setValue(votes);
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                            castVoteButton.setEnabled(false);
+                            changeVoteButton.setEnabled(true);
+                            gridView.setEnabled(false);
 
-                    }
-                });
+                            votingFor.setText("Voted for " + currentVote);
 
-                votersRef.child(nomineeUid).child(categoryName).setValue(currentVote);
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+                    votersRef.child(nomineeUid).child(categoryName).setValue(currentVote);
+                }
             }
         });
 
@@ -171,6 +193,7 @@ public class CastVoteActivity extends AppCompatActivity {
                 });
 
                 votersRef.child(nomineeUid).child(categoryName).setValue("none");
+                currentVote = "none";
 
             }
         });
@@ -183,7 +206,8 @@ public class CastVoteActivity extends AppCompatActivity {
                 nomineesModel = nomineesModelArrayList.get(i);
 
                 currentVote = String.valueOf(nomineesModel.getUid());
-                votingFor.setText("Voting for " + currentVote);
+
+                votingFor.setText("You have selected " + nomineesModel.getFirstName());
 
 
 

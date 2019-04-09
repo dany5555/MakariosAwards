@@ -3,12 +3,12 @@ package com.makariosawards;
 public class NomineesModel {
 
     String firstName, lastName, pictureUrl, nomineeDescription, group;
-    int uid;
+    String uid;
 
     public NomineesModel() {
     }
 
-    public NomineesModel(String firstName, String lastName, String pictureUrl, String nomineeDescription, String group, int uid) {
+    public NomineesModel(String firstName, String lastName, String pictureUrl, String nomineeDescription, String group, String uid) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pictureUrl = pictureUrl;
@@ -57,11 +57,11 @@ public class NomineesModel {
         this.group = group;
     }
 
-    public int getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 }
