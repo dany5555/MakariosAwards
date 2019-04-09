@@ -1,6 +1,7 @@
 package com.makariosawards;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,9 +43,11 @@ public class CategoriesAdapter extends BaseAdapter {
         }
 
         TextView categoryName = view.findViewById(R.id.category_title);
+        Typeface face = Typeface.createFromAsset(context.getAssets(), "optima_regular.ttf");
 
         categoriesModel = (CategoriesModel) this.getItem(i);
 
+        categoryName.setTypeface(face);
         categoryName.setText(categoriesModel.getCategoryUid());
 
         return view;

@@ -152,7 +152,7 @@ public class CastVoteActivity extends AppCompatActivity {
                             changeVoteButton.setEnabled(true);
                             gridView.setEnabled(false);
 
-                            votingFor.setText("Voted for " + currentVote);
+                            //votingFor.setText("Voted for " + currentVote);
 
 
                         }
@@ -193,7 +193,7 @@ public class CastVoteActivity extends AppCompatActivity {
                 });
 
                 votersRef.child(nomineeUid).child(categoryName).setValue("none");
-                currentVote = "none";
+                //currentVote = "none";
 
             }
         });

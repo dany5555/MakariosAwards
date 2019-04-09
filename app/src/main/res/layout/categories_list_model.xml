@@ -7,6 +7,7 @@
         android:id="@+id/category_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/optima_regular"
         android:textSize="20sp"
         android:text="Category Name"/>
 

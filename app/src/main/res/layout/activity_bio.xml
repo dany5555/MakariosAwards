@@ -14,16 +14,20 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/makarios_logo" />
+        app:srcCompat="@drawable/makarios_single_logo" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:id="@+id/nominee_name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="AWARDS"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/optima_regular"
+        android:text="NOMINEE NAME"
+        android:textAllCaps="true"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
@@ -32,39 +36,61 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
         tools:srcCompat="@tools:sample/avatars[2]" />
 
     <TextView
-        android:id="@+id/nominee_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="Full Name"
-        app:layout_constraintStart_toEndOf="@+id/nominee_picture"
-        app:layout_constraintTop_toTopOf="@+id/nominee_picture" />
-
-    <TextView
         android:id="@+id/nominee_roll"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="32dp"
-        android:text="Roll in Club"
-        app:layout_constraintBottom_toBottomOf="@+id/nominee_picture"
-        app:layout_constraintStart_toEndOf="@+id/nominee_picture" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Roll in Club:"
+        android:fontFamily="@font/optima_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nominee_picture"
+        app:layout_constraintTop_toBottomOf="@+id/nominee_nationality" />
 
     <TextView
         android:id="@+id/nominee_description"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/optima_regular"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nominee_picture" />
+
+    <TextView
+        android:id="@+id/nominee_age"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/optima_regular"
+        android:text="Age:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nominee_picture"
+        app:layout_constraintTop_toTopOf="@+id/nominee_picture" />
+
+    <TextView
+        android:id="@+id/nominee_nationality"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Nationality:"
+        android:fontFamily="@font/optima_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nominee_picture"
+        app:layout_constraintTop_toBottomOf="@+id/nominee_age" />
 </android.support.constraint.ConstraintLayout>

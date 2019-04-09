@@ -2,19 +2,28 @@ package com.makariosawards;
 
 public class NomineesModel {
 
-    String firstName, lastName, pictureUrl, nomineeDescription, group;
+    String fullName, firstName, lastName, pictureUrl, nomineeDescription, group;
     String uid;
 
     public NomineesModel() {
     }
 
-    public NomineesModel(String firstName, String lastName, String pictureUrl, String nomineeDescription, String group, String uid) {
+    public NomineesModel(String fullName, String firstName, String lastName, String pictureUrl, String nomineeDescription, String group, String uid) {
+        this.fullName = fullName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.pictureUrl = pictureUrl;
         this.nomineeDescription = nomineeDescription;
         this.group = group;
         this.uid = uid;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getFirstName() {

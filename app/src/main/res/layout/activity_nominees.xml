@@ -14,14 +14,15 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/makarios_logo" />
+        app:srcCompat="@drawable/makarios_single_logo" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="AWARDS"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/optima_regular"
+        android:text="THE NOMINEES"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
@@ -29,13 +30,13 @@
 
     <GridView
         android:id="@+id/gridview"
-        android:layout_width="395dp"
-        android:layout_height="527dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:numColumns="4"
+        android:numColumns="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

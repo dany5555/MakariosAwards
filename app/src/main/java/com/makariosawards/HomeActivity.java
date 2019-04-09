@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         loggedInRef.child(nomineeUid).child("firstName").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                welcomeText.setText(dataSnapshot.getValue().toString());
+                welcomeText.setText("Welcome " + dataSnapshot.getValue().toString());
             }
 
             @Override

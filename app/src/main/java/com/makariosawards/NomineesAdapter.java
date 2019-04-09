@@ -1,6 +1,7 @@
 package com.makariosawards;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,10 +48,13 @@ public class NomineesAdapter extends BaseAdapter {
         ImageView nomineePicture = view.findViewById(R.id.nominee_picture);
         TextView nomineeName = view.findViewById(R.id.nominee_name);
 
+        Typeface face = Typeface.createFromAsset(context.getAssets(), "optima_regular.ttf");
+
         nomineesModel = (NomineesModel) this.getItem(i);
 
         String nomineePictureUrl = nomineesModel.getPictureUrl();
 
+        nomineeName.setTypeface(face);
         nomineeName.setText(nomineesModel.getFirstName());
         Glide.with(context).load(nomineePictureUrl).into(nomineePicture);
 

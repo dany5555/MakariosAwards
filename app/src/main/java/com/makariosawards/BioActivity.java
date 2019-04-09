@@ -16,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 public class BioActivity extends AppCompatActivity {
 
     ImageView nomineePicture;
-    TextView nomineeName, nomineeRoll, nomineeDescription;
+    TextView nomineeName, nomineeRoll, nomineeDescription, nomineeAge, nomineeNationality;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference nomineeRef;
     String nomineeUid;
@@ -33,8 +33,10 @@ public class BioActivity extends AppCompatActivity {
         nomineeName = findViewById(R.id.nominee_name);
         nomineeDescription = findViewById(R.id.nominee_description);
         nomineeRoll = findViewById(R.id.nominee_roll);
+        nomineeAge = findViewById(R.id.nominee_age);
+        nomineeNationality = findViewById(R.id.nominee_nationality);
 
-        nomineeRef.child("firstName").addValueEventListener(new ValueEventListener() {
+        nomineeRef.child("fullName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 nomineeName.setText(dataSnapshot.getValue().toString());
@@ -62,7 +64,7 @@ public class BioActivity extends AppCompatActivity {
         nomineeRef.child("group").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                nomineeRoll.setText(dataSnapshot.getValue().toString());
+                nomineeRoll.setText("Roll in Club: " + dataSnapshot.getValue().toString());
             }
 
             @Override
@@ -75,6 +77,30 @@ public class BioActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 nomineeDescription.setText(dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        nomineeRef.child("age").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                nomineeAge.setText("Age: " + dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        nomineeRef.child("nationality").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                nomineeNationality.setText("Nationality: " + dataSnapshot.getValue().toString());
             }
 
             @Override
