@@ -29,8 +29,13 @@ public class CastVoteActivity extends AppCompatActivity {
     DatabaseReference categoriesRef = database.getReference("Categories");
     DatabaseReference votersRef = database.getReference("Voters");
     DatabaseReference nomineesRef = database.getReference("Nominees");
+    DatabaseReference isVotingEnabledRef = database.getReference("isVotingEnabled");
     String categoryName, nomineeUid;
     String currentVote;
+
+    // String used to check is voting is still open or not.
+    String checkVoting;
+
     //String votedFor;
 
 
@@ -53,6 +58,18 @@ public class CastVoteActivity extends AppCompatActivity {
         castVoteButton = findViewById(R.id.cast_vote_button);
         changeVoteButton = findViewById(R.id.change_vote_button);
         gridView.setAdapter(nomineesAdapter);
+
+        isVotingEnabledRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                checkVoting = dataSnapshot.getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         votersRef.child(nomineeUid).child(categoryName).addValueEventListener(new ValueEventListener() {
             @Override
@@ -135,25 +152,63 @@ public class CastVoteActivity extends AppCompatActivity {
         castVoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TextUtils.equals(currentVote, "none")) {
-                    // Tell the user to select a nominee from the list
-                    Toast.makeText(getApplicationContext(), "Please select a nominee from the list above", Toast.LENGTH_SHORT).show();
-                } else {
+
+                if(TextUtils.equals(checkVoting, "true")) {
+                    if(TextUtils.equals(currentVote, "none")) {
+                        // Tell the user to select a nominee from the list
+                        Toast.makeText(getApplicationContext(), "Please select a nominee from the list above", Toast.LENGTH_SHORT).show();
+                    } else {
 
 
+                        categoriesRef.child(categoryName).child("Nominees").child(currentVote).child("votes").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                int votes = Integer.valueOf(dataSnapshot.getValue().toString());
+                                votes += 1;
+                                categoriesRef.child(categoryName).child("Nominees").child(currentVote).child("votes").setValue(votes);
+
+                                castVoteButton.setEnabled(false);
+                                changeVoteButton.setEnabled(true);
+                                gridView.setEnabled(false);
+
+                                //votingFor.setText("Voted for " + currentVote);
+
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+                        votersRef.child(nomineeUid).child(categoryName).setValue(currentVote);
+                    }
+                } else if(TextUtils.equals(checkVoting, "false")) {
+                    Toast.makeText(getApplicationContext(), "The voting window is currently closed.", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+        changeVoteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (TextUtils.equals(checkVoting, "true")) {
                     categoriesRef.child(categoryName).child("Nominees").child(currentVote).child("votes").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             int votes = Integer.valueOf(dataSnapshot.getValue().toString());
-                            votes += 1;
+                            votes -= 1;
                             categoriesRef.child(categoryName).child("Nominees").child(currentVote).child("votes").setValue(votes);
 
-                            castVoteButton.setEnabled(false);
-                            changeVoteButton.setEnabled(true);
-                            gridView.setEnabled(false);
+                            castVoteButton.setEnabled(true);
+                            changeVoteButton.setEnabled(false);
+                            gridView.setEnabled(true);
 
-                            //votingFor.setText("Voted for " + currentVote);
-
+                            votingFor.setText("Select nominee above");
 
                         }
 
@@ -163,37 +218,13 @@ public class CastVoteActivity extends AppCompatActivity {
                         }
                     });
 
-                    votersRef.child(nomineeUid).child(categoryName).setValue(currentVote);
+                    votersRef.child(nomineeUid).child(categoryName).setValue("none");
+                    //currentVote = "none";
+                } else if (TextUtils.equals(checkVoting, "false")) {
+                    Toast.makeText(getApplicationContext(), "The voting window is currently closed. No changes can be made.", Toast.LENGTH_SHORT).show();
+
                 }
-            }
-        });
 
-        changeVoteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                categoriesRef.child(categoryName).child("Nominees").child(currentVote).child("votes").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        int votes = Integer.valueOf(dataSnapshot.getValue().toString());
-                        votes -= 1;
-                        categoriesRef.child(categoryName).child("Nominees").child(currentVote).child("votes").setValue(votes);
-
-                        castVoteButton.setEnabled(true);
-                        changeVoteButton.setEnabled(false);
-                        gridView.setEnabled(true);
-
-                        votingFor.setText("Select nominee above");
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
-                votersRef.child(nomineeUid).child(categoryName).setValue("none");
-                //currentVote = "none";
 
             }
         });
