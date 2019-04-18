@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CastVoteActivity"></activity>
+        <activity android:name=".AdminActivity"></activity>
+        <activity android:name=".AdminLoginActivity" />
+        <activity android:name=".CastVoteActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

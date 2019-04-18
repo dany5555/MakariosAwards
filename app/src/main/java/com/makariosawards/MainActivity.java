@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     //Button loginButton;
     EditText idEditText;
     Button submitButton;
+    TextView adminTextView;
+
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     //FirebaseAuth firebaseAuth;
     DatabaseReference ref = database.getReference("Nominees");
@@ -42,6 +45,15 @@ public class MainActivity extends AppCompatActivity {
         //loginButton = findViewById(R.id.login_button);
         idEditText = findViewById(R.id.id_edittext);
         submitButton = findViewById(R.id.submitButton);
+        adminTextView = findViewById(R.id.admin_textview);
+
+        adminTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AdminLoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
