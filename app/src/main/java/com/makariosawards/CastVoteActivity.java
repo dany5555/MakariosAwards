@@ -112,7 +112,7 @@ public class CastVoteActivity extends AppCompatActivity {
 
 
 
-        categoriesRef.child(categoryName).child("Nominees").addValueEventListener(new ValueEventListener() {
+        categoriesRef.child(categoryName).child("Nominees").orderByChild("firstName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (gridView.getAdapter() == null) {
