@@ -16,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 public class BioActivity extends AppCompatActivity {
 
     ImageView nomineePicture;
-    TextView nomineeName, nomineeRoll, nomineeDescription, nomineeAge, nomineeNationality;
+    TextView nomineeName, nomineeRoll, nomineeAge, nomineeNationality;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference nomineeRef;
     String nomineeUid;
@@ -24,14 +24,13 @@ public class BioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bio);
+        setContentView(R.layout.activity_bio_alternate);
 
         nomineeUid = getIntent().getStringExtra("nomineeUid");
         nomineeRef = database.getReference("Nominees").child(nomineeUid);
 
         nomineePicture = findViewById(R.id.nominee_picture);
         nomineeName = findViewById(R.id.nominee_name);
-        nomineeDescription = findViewById(R.id.nominee_description);
         nomineeRoll = findViewById(R.id.nominee_roll);
         nomineeAge = findViewById(R.id.nominee_age);
         nomineeNationality = findViewById(R.id.nominee_nationality);
@@ -64,19 +63,7 @@ public class BioActivity extends AppCompatActivity {
         nomineeRef.child("group").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                nomineeRoll.setText("Roll in Club: " + dataSnapshot.getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        nomineeRef.child("nomineeDescription").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                nomineeDescription.setText(dataSnapshot.getValue().toString());
+                nomineeRoll.setText(dataSnapshot.getValue().toString());
             }
 
             @Override
@@ -88,7 +75,7 @@ public class BioActivity extends AppCompatActivity {
         nomineeRef.child("age").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                nomineeAge.setText("Age: " + dataSnapshot.getValue().toString());
+                nomineeAge.setText(dataSnapshot.getValue().toString());
             }
 
             @Override
@@ -100,7 +87,7 @@ public class BioActivity extends AppCompatActivity {
         nomineeRef.child("nationality").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                nomineeNationality.setText("Nationality: " + dataSnapshot.getValue().toString());
+                nomineeNationality.setText(dataSnapshot.getValue().toString());
             }
 
             @Override

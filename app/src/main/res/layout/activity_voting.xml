@@ -14,7 +14,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/makarios_logo" />
+        app:srcCompat="@drawable/makarios_single_logo" />
 
     <TextView
         android:id="@+id/textView7"
