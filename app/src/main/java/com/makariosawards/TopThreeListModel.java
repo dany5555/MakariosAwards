@@ -1,21 +1,23 @@
 package com.makariosawards;
 
-public class NomineesModel {
+public class TopThreeListModel {
 
-    String fullName, firstName, lastName, pictureUrl, nomineeDescription, group;
+    String fullName, firstName, lastName, pictureUrl;
     String uid;
+    int votes;
 
-    public NomineesModel() {
+    public TopThreeListModel() {
+
     }
 
-    public NomineesModel(String fullName, String firstName, String lastName, String pictureUrl, String nomineeDescription, String group, String uid) {
+    public TopThreeListModel(String fullName, String firstName, String lastName, String pictureUrl, int votes, String uid) {
         this.fullName = fullName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.pictureUrl = pictureUrl;
-        this.nomineeDescription = nomineeDescription;
-        this.group = group;
         this.uid = uid;
+        this.votes = votes;
+
     }
 
     public String getFullName() {
@@ -50,22 +52,6 @@ public class NomineesModel {
         this.pictureUrl = pictureUrl;
     }
 
-    public String getNomineeDescription() {
-        return nomineeDescription;
-    }
-
-    public void setNomineeDescription(String nomineeDescription) {
-        this.nomineeDescription = nomineeDescription;
-    }
-
-    public String getGroup() {
-        return group;
-    }
-
-    public void setGroup(String group) {
-        this.group = group;
-    }
-
     public String getUid() {
         return uid;
     }
@@ -74,4 +60,11 @@ public class NomineesModel {
         this.uid = uid;
     }
 
+    public int getVotes() {
+        return votes;
+    }
+
+    public void setVotes(int votes) {
+        this.votes = votes;
+    }
 }

@@ -13,23 +13,9 @@ public class AdminActivity extends AppCompatActivity {
 
     TabLayout categoriesTabLayout;
     ViewPager viewPager;
+    PagerAdapter pagerAdapter;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-    DatabaseReference bestDirectivaMember = database.getReference("Categories").child("Best Directiva Member");
-    DatabaseReference bestGringo = database.getReference("Categories").child("Best Gringo");
-    DatabaseReference bestSmile = database.getReference("Categories").child("Best Smile");
-    DatabaseReference firstInLineForPotluck = database.getReference("Categories").child("First in Line for Potluck");
-    DatabaseReference kindest = database.getReference("Categories").child("Kindest");
-    DatabaseReference laziestPersonInDrama = database.getReference("Categories").child("Laziest Person in Drama");
-    DatabaseReference laziestPersonInMusic = database.getReference("Categories").child("Laziest Person in Music");
-    DatabaseReference laziestPersonInPoetry = database.getReference("Categories").child("Laziest Person in Poetry");
-    DatabaseReference loudestLaugh = database.getReference("Categories").child("Loudest Laugh");
-    DatabaseReference mostDramatic = database.getReference("Categories").child("Most Dramatic");
-    DatabaseReference mostPassionate = database.getReference("Categories").child("Most Passionate");
-    DatabaseReference mostPunctual = database.getReference("Categories").child("Most Punctual");
-    DatabaseReference quietest = database.getReference("Categories").child("Quietest");
-    DatabaseReference sleepiest = database.getReference("Categories").child("Sleepiest");
 
     int currentPage = 0;
     int currentTabDisplayed;
@@ -63,6 +49,26 @@ public class AdminActivity extends AppCompatActivity {
         categoriesTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
         viewPager = findViewById(R.id.viewpager);
+        pagerAdapter = new PagerAdapter(getSupportFragmentManager(), categoriesTabLayout.getTabCount());
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(categoriesTabLayout));
+        categoriesTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+                currentPage = viewPager.getCurrentItem();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
 
     }

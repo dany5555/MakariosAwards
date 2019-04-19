@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/first_place_picture"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/second_place_picture"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/second_place_textview"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/third_place_picture"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/third_place_textview"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/first_place_name_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/optima_regular"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/first_place_picture"
+        app:layout_constraintStart_toStartOf="@+id/first_place_picture"
+        app:layout_constraintTop_toBottomOf="@+id/first_place_picture" />
+
+    <TextView
+        android:id="@+id/second_place_name_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/optima_regular"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/second_place_picture"
+        app:layout_constraintStart_toStartOf="@+id/second_place_picture"
+        app:layout_constraintTop_toBottomOf="@+id/second_place_picture" />
+
+    <TextView
+        android:id="@+id/third_place_name_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/optima_regular"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/third_place_picture"
+        app:layout_constraintStart_toStartOf="@+id/third_place_picture"
+        app:layout_constraintTop_toBottomOf="@+id/third_place_picture" />
+
+    <TextView
+        android:id="@+id/first_place_votes_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/optima_regular"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/first_place_picture"
+        app:layout_constraintStart_toStartOf="@+id/first_place_picture"
+        app:layout_constraintTop_toBottomOf="@+id/first_place_name_textview" />
+
+    <TextView
+        android:id="@+id/second_place_votes_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/optima_regular"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/second_place_picture"
+        app:layout_constraintStart_toStartOf="@+id/second_place_picture"
+        app:layout_constraintTop_toBottomOf="@+id/second_place_name_textview" />
+
+    <TextView
+        android:id="@+id/third_place_votes_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/optima_regular"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/third_place_picture"
+        app:layout_constraintStart_toStartOf="@+id/third_place_picture"
+        app:layout_constraintTop_toBottomOf="@+id/third_place_name_textview" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/optima_regular"
+        android:text="1st Place"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/gold"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/first_place_picture"
+        app:layout_constraintEnd_toEndOf="@+id/first_place_picture"
+        app:layout_constraintStart_toStartOf="@+id/first_place_picture" />
+
+    <TextView
+        android:id="@+id/second_place_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/optima_regular"
+        android:text="2nd Place"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/gold"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/second_place_picture"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/second_place_picture"
+        app:layout_constraintTop_toBottomOf="@+id/first_place_votes_textview" />
+
+    <TextView
+        android:id="@+id/third_place_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/optima_regular"
+        android:text="3rd Place"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/gold"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/third_place_picture"
+        app:layout_constraintStart_toStartOf="@+id/third_place_picture"
+        app:layout_constraintTop_toBottomOf="@+id/first_place_votes_textview" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50121653" />
+</android.support.constraint.ConstraintLayout>
