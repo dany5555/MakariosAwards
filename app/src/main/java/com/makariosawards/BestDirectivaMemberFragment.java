@@ -52,7 +52,7 @@ public class BestDirectivaMemberFragment extends Fragment {
         topThreeAdapter = new TopThreeAdapter(getActivity(), topThreeListModelArrayList);
         listView.setAdapter(topThreeAdapter);
 
-        categorie.orderByChild("votes").limitToLast(5).addValueEventListener(new ValueEventListener() {
+        categorie.orderByChild("votes").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
