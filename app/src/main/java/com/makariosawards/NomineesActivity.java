@@ -33,6 +33,7 @@ public class NomineesActivity extends AppCompatActivity {
         gridView = findViewById(R.id.gridview);
         gridView.setAdapter(nomineesAdapter);
 
+
         nomineesRef.orderByChild("firstName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
