@@ -3,6 +3,9 @@ package com.makariosawards;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,21 +22,50 @@ import com.google.firebase.database.ValueEventListener;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button nomineesButton, voteButton;
     String nomineeUid;
-    TextView welcomeText, privacyPolicyTextView;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference loggedInRef = database.getReference("Nominees");
+
+    BottomNavigationView bottomNavigationView;
+    VoteFragment voteFragment;
+    HomeFragment homeFragment;
+    NomineesFragment nomineesFragment;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        nomineesButton = findViewById(R.id. nominees_button);
-        voteButton = findViewById(R.id.vote_button);
-        welcomeText = findViewById(R.id.welcomeText);
-        privacyPolicyTextView = findViewById(R.id.privacyPolicyTextView);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        voteFragment = new VoteFragment();
+        homeFragment = new HomeFragment();
+        nomineesFragment = new NomineesFragment();
+
+        setFragment(homeFragment);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.vote_section :
+                        setFragment(voteFragment);
+                        return true;
+                    case R.id.home_section :
+                        setFragment(homeFragment);
+                        return true;
+                    case R.id.nominees_section :
+                        setFragment(nomineesFragment);
+                        return true;
+                    default :
+                        return false;
+                }
+            }
+        });
+
+        bottomNavigationView.setSelectedItemId(R.id.home_section);
+
 
         nomineeUid = getIntent().getStringExtra("id");
 
@@ -41,7 +73,7 @@ public class HomeActivity extends AppCompatActivity {
         loggedInRef.child(nomineeUid).child("firstName").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                welcomeText.setText("Welcome " + dataSnapshot.getValue().toString());
+                //welcomeText.setText("Welcome " + dataSnapshot.getValue().toString());
             }
 
             @Override
@@ -50,33 +82,29 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        nomineesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NomineesActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        voteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), VotingActivity.class);
-                intent.putExtra("nomineeUid", nomineeUid);
-                startActivity(intent);
-            }
-        });
+    }
 
-        privacyPolicyTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://docs.google.com/document/d/e/2PACX-1vRN0F7mcatMRyM_KwY1PhhKmbeFjaWesJOeLCagdERIfSZ0efwCadnpGZ6jzIvx0Sn5CTlNKoVwApwF/pub")));
+    public void editProfile(MenuItem menuItem) {
+        Intent intent = new Intent(getApplicationContext(), EditProfileActivity.class);
+        intent.putExtra("nomineeUid", nomineeUid);
+        startActivity(intent);
+    }
 
-            }
-        });
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_menu_layout, menu);
+        return true;
     }
 
     @Override
     public void onBackPressed() {
+    }
+
+    private void setFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }

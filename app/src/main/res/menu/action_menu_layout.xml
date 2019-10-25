@@ -4,8 +4,10 @@
 
     <item
         android:id="@+id/privacy_policy"
-        app:showAsAction="collapseActionView"
-        android:title="Privacy Policy">
+        app:showAsAction="always"
+        android:title="Profile"
+        android:onClick="editProfile"
+        android:icon="@drawable/ic_profile">
 
     </item>
 

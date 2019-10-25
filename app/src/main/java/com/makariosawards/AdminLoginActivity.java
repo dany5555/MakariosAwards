@@ -44,12 +44,13 @@ public class AdminLoginActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.submitButton);
         notAdminTextview = findViewById(R.id.admin_textview);
 
+
         // In case the user is not an admin, this listener returns the user to the
         // non-admin login activity.
         notAdminTextview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
         });
