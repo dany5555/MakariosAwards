@@ -6,18 +6,21 @@
         android:id="@+id/vote_section"
         android:enabled="true"
         android:title="Vote"
+        android:icon="@drawable/ic_vote"
         app:showAsAction="withText"/>
 
     <item
         android:id="@+id/home_section"
         android:enabled="true"
         android:title="Home"
+        android:icon="@drawable/ic_home"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/nominees_section"
         android:enabled="true"
-        android:title="Nominees"
+        android:title="Members"
+        android:icon="@drawable/ic_members"
         app:showAsAction="ifRoom"/>
 
 

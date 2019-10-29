@@ -13,6 +13,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
+
 public class NomineesAdapter extends BaseAdapter {
 
     Context context;
@@ -56,7 +58,7 @@ public class NomineesAdapter extends BaseAdapter {
 
         nomineeName.setTypeface(face);
         nomineeName.setText(nomineesModel.getFirstName());
-        Glide.with(context).load(nomineePictureUrl).into(nomineePicture);
+        Glide.with(context).load(nomineePictureUrl).transition(withCrossFade()).into(nomineePicture);
 
 
         return view;

@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
     DatabaseReference loggedInRef = database.getReference("Nominees");
 
     BottomNavigationView bottomNavigationView;
+    Toolbar toolbar;
     VoteFragment voteFragment;
     HomeFragment homeFragment;
     NomineesFragment nomineesFragment;
@@ -39,9 +41,18 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        toolbar = findViewById(R.id.toolbar);
         voteFragment = new VoteFragment();
         homeFragment = new HomeFragment();
         nomineesFragment = new NomineesFragment();
+
+        setSupportActionBar(toolbar);
+
+        // Display icon in the toolbar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_makarios_awards_logo_with_insignia_horizontal_taller);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         setFragment(homeFragment);
 

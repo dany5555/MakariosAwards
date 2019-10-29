@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".NomineesFragment">
+    android:layout_height="match_parent">
 
     <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,38 +22,29 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/members_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/optima_regular"
-                android:text="2019-2020 MEMBERS"
+                android:text="2019-2020 Members"
                 android:textAlignment="center"
+                android:textAllCaps="true"
                 android:textColor="@android:color/black"
                 android:textSize="30sp" />
 
-            <GridView
-                android:id="@+id/gridview"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/members_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/textView10"
-                android:layout_marginTop="8dp"
-                android:numColumns="3"
-                android:scrollbars="none" />
+                android:layout_below="@id/members_header"
+                android:layout_marginTop="16dp">
+
+
+            </android.support.v7.widget.RecyclerView>
 
 
         </RelativeLayout>
-
-
     </ScrollView>
-
-
-
-
-
 
 </android.support.constraint.ConstraintLayout>
