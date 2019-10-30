@@ -1,8 +1,8 @@
 package com.makariosawards;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -78,7 +78,7 @@ public class AdminLoginActivity extends AppCompatActivity {
                             // If not, the user is prompted to enter a valid ID.
                             if (dataSnapshot.hasChild(id)) {
                                 Toast.makeText(getApplicationContext(), "You have successfully logged in", Toast.LENGTH_SHORT).show();
-                                // Go to home activity and save id to display name of person that is voting and keep track of their votes.
+                                // Go to home activity and save id to display firstName of person that is voting and keep track of their votes.
 
                                 Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
                                 intent.putExtra("id", id);
