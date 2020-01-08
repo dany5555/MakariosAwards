@@ -3,4 +3,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="example_p1">The 2020 Makarios Awards will be expanded and promise far more excitement. The implementation of the Makarios Awards Official app proved to be a huge success last year.</string>
+    <string name="example_p2">For this year, the app has been given a fresh look with better performance, brand new features, but without losing the excitement and fun of the awards.</string>
+    <string name="example_p3">Makarios members will now be able to read featured articles written by Makarios members for Makarios members. Videos will also be available to watch. Members will also have the ability to customize their profiles and of course cast their votes for the final awards ceremony.</string>
+    <string name="example_p4">Make sure you have automatic updates turned on to have the most recent features available to you, and of course don\'t miss out on the Makarios Awards 2020</string>
 </resources>

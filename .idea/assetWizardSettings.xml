@@ -132,10 +132,10 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="height" value="32" />
-                            <entry key="outputName" value="ic_makarios_awards_logo_with_insignia_horizontal_taller" />
+                            <entry key="outputName" value="ic_makarios_single_logo_for_app" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\Kevin Daniel\Downloads\makarios_awards_logo_with_insignia_horizontal_taller.svg" />
-                            <entry key="width" value="279" />
+                            <entry key="sourceFile" value="C:\Users\Kevin Daniel\Downloads\makarios_single_logo_for_app.svg" />
+                            <entry key="width" value="32" />
                           </map>
                         </option>
                       </PersistentState>

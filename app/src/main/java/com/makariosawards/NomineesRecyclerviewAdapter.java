@@ -3,11 +3,15 @@ package com.makariosawards;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -40,7 +44,7 @@ public class NomineesRecyclerviewAdapter extends RecyclerView.Adapter<NomineesRe
     }
 
     public NomineesRecyclerviewAdapter.ViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
-        LayoutInflater inflater =LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.nominees_grid_model, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(view);
@@ -50,11 +54,27 @@ public class NomineesRecyclerviewAdapter extends RecyclerView.Adapter<NomineesRe
     @Override
     public void onBindViewHolder(@NonNull NomineesRecyclerviewAdapter.ViewHolder viewHolder, int i) {
 
-        NomineesModel nomineesModel =nomineesModelArrayList.get(i);
+        Typeface face = Typeface.createFromAsset(context.getAssets(), "optima_regular.ttf");
 
-        viewHolder.nomineeName.setText(nomineesModel.firstName);
+
+        final NomineesModel nomineesModel = nomineesModelArrayList.get(i);
+
+        viewHolder.nomineeName.setTypeface(face);
+        viewHolder.nomineeName.setText(nomineesModel.getFirstName());
         String nomineePictureUrl = nomineesModel.getPictureUrl();
         Glide.with(context).load(nomineePictureUrl).transition(withCrossFade()).into(viewHolder.nomineePicture);
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(context, "Member: " + nomineesModel.getFirstName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, BioActivity.class);
+
+                String memberUid = nomineesModel.getUid();
+                intent.putExtra("nomineeUid", memberUid);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

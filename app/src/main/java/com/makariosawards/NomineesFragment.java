@@ -28,16 +28,18 @@ import java.util.ArrayList;
  */
 public class NomineesFragment extends Fragment {
 
-    GridView gridView;
+    //GridView gridView;
     ScrollView scrollView;
     RecyclerView recyclerView;
     NomineesRecyclerviewAdapter nomineesRecyclerviewAdapter;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference membersRef = database.getReference("Nominees");
-    ArrayList<NomineesModel> nomineesModelArrayList = new ArrayList<>();
     NomineesModel nomineesModel;
     NomineesAdapter nomineesAdapter;
+
+    ArrayList<NomineesModel> nomineesModelArrayList = new ArrayList<>();
+
 
     View view;
 
@@ -52,34 +54,34 @@ public class NomineesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         if (view == null) {
-            view = inflater.inflate(R.layout.fragment_nominees, container, false);
+            view = inflater.inflate(R.layout.fragment_nominees_recyclerview, container, false);
         }
 
-        //recyclerView = view.findViewById(R.id.members_recycler_view);
-        scrollView = view.findViewById(R.id.scrollView2);
+        recyclerView = view.findViewById(R.id.members_recycler_view);
+        scrollView = view.findViewById(R.id.scrollview);
         scrollView.setVerticalScrollBarEnabled(false);
-        //recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setNestedScrollingEnabled(false);
 
         nomineesModel = new NomineesModel();
 
-        //nomineesRecyclerviewAdapter = new NomineesRecyclerviewAdapter(getActivity(), nomineesModelArrayList);
-        //recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-        //recyclerView.setAdapter(nomineesRecyclerviewAdapter);
+        nomineesRecyclerviewAdapter = new NomineesRecyclerviewAdapter(getActivity(), nomineesModelArrayList);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        recyclerView.setAdapter(nomineesRecyclerviewAdapter);
 
-        gridView = view.findViewById(R.id.gridview);
-        gridView.setNestedScrollingEnabled(false);
-        gridView.setAdapter(nomineesAdapter);
+        //gridView = view.findViewById(R.id.gridview);
+        //gridView.setNestedScrollingEnabled(false);
+        //gridView.setAdapter(nomineesAdapter);
 
         membersRef.orderByChild("firstName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 nomineesModelArrayList.clear();
 
-                if (gridView.getAdapter() == null) {
-                    NomineesAdapter nomineesAdapter = new NomineesAdapter(getActivity(), nomineesModelArrayList);
-                    gridView.setAdapter(nomineesAdapter);
+                if (recyclerView.getAdapter() == null) {
+                    NomineesRecyclerviewAdapter nomineesRecyclerviewAdapter = new NomineesRecyclerviewAdapter(getActivity(), nomineesModelArrayList);
+                    recyclerView.setAdapter(nomineesRecyclerviewAdapter);
                 } else {
-                    ((NomineesAdapter) gridView.getAdapter()).refill(nomineesModelArrayList);
+                    ((NomineesRecyclerviewAdapter) recyclerView.getAdapter()).refill(nomineesModelArrayList);
                 }
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -96,7 +98,7 @@ public class NomineesFragment extends Fragment {
         });
 
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /**gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 nomineesModel = new NomineesModel();
@@ -108,7 +110,7 @@ public class NomineesFragment extends Fragment {
                 intent.putExtra("nomineeUid", nomineeUid);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
         return view;
