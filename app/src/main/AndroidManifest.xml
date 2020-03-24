@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AllVotesActivity"></activity>
+        <activity android:name=".NewCastVoteActivity"></activity>
+        <activity android:name=".AdminBetterNewActivity" />
+        <activity android:name=".FullVotingStandingsActivity" />
+        <activity android:name=".AdminBetterActivity" />
+        <activity android:name=".AllVotesActivity" />
         <activity android:name=".ArticleActivity" />
         <activity android:name=".NewAdminActivity" />
         <activity android:name=".RecyclerTestActivity" />

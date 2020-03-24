@@ -29,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
     VoteFragment voteFragment;
     HomeFragment homeFragment;
     NomineesFragment nomineesFragment;
+    VotingUnavailableFragment votingUnavailableFragment;
 
 
 
@@ -37,11 +38,14 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        getUid();
+
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         toolbar = findViewById(R.id.toolbar);
         voteFragment = new VoteFragment();
         homeFragment = new HomeFragment();
         nomineesFragment = new NomineesFragment();
+        votingUnavailableFragment = new VotingUnavailableFragment();
 
         setSupportActionBar(toolbar);
 
@@ -58,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.vote_section :
-                        setFragment(voteFragment);
+                        setFragment(votingUnavailableFragment);
                         return true;
                     case R.id.home_section :
                         setFragment(homeFragment);
@@ -114,5 +118,11 @@ public class HomeActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.content, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    public String getUid() {
+        nomineeUid = getIntent().getStringExtra("id");
+        return nomineeUid;
+
     }
 }

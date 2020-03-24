@@ -55,7 +55,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
         } else if (viewType == 1) {
             view = layoutInflater.inflate(R.layout.special_view, parent, false);
             return new SpecialViewHolder(view);
-        } view = layoutInflater.inflate(R.layout.countdown_view, parent, false);
+        } view = layoutInflater.inflate(R.layout.new_categories_list_item, parent, false);
         return new CountdownViewHolder(view);
     }
 
@@ -69,11 +69,12 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
             articleViewHolder.titleTextView.setText(homeDataModelArrayList.get(position).title);
             Glide.with(context).load(homeDataModelArrayList.get(position).primaryImageUrl).transition(withCrossFade()).into(articleViewHolder.primaryImageView);
 
-            articleViewHolder.articleCardView.setOnClickListener(new View.OnClickListener() {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(context, homeDataModelArrayList.get(position).appLink, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, ArticleActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("title", homeDataModelArrayList.get(position).title);
                     intent.putExtra("primaryImageUrl", homeDataModelArrayList.get(position).primaryImageUrl);
                     intent.putExtra("secondaryImageUrl", homeDataModelArrayList.get(position).secondaryImageUrl);
@@ -154,7 +155,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
         public CountdownViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            countdownTitle = itemView.findViewById(R.id.countdown_title);
+            countdownTitle = itemView.findViewById(R.id.category_textView);
         }
     }
 

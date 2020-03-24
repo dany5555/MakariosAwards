@@ -80,7 +80,7 @@ public class AdminLoginActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "You have successfully logged in", Toast.LENGTH_SHORT).show();
                                 // Go to home activity and save id to display firstName of person that is voting and keep track of their votes.
 
-                                Intent intent = new Intent(getApplicationContext(), NewAdminActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), AdminBetterNewActivity.class);
                                 intent.putExtra("id", id);
                                 startActivity(intent);
                             } else {
