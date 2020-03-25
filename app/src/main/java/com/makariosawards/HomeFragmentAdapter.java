@@ -67,26 +67,21 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
 
             ArticleViewHolder articleViewHolder = (ArticleViewHolder) holder;
             articleViewHolder.titleTextView.setText(homeDataModelArrayList.get(position).title);
-            Glide.with(context).load(homeDataModelArrayList.get(position).primaryImageUrl).transition(withCrossFade()).into(articleViewHolder.primaryImageView);
+            Glide.with(context).load(homeDataModelArrayList.get(position).getFirstImageUrl()).transition(withCrossFade()).into(articleViewHolder.primaryImageView);
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, homeDataModelArrayList.get(position).appLink, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, homeDataModelArrayList.get(position).getAppLink(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, ArticleActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.putExtra("title", homeDataModelArrayList.get(position).title);
-                    intent.putExtra("primaryImageUrl", homeDataModelArrayList.get(position).primaryImageUrl);
-                    intent.putExtra("secondaryImageUrl", homeDataModelArrayList.get(position).secondaryImageUrl);
-                    intent.putExtra("dateAndAuthor", homeDataModelArrayList.get(position).dateAndAuthor);
-                    intent.putExtra("paragraph1", homeDataModelArrayList.get(position).paragraph1);
-                    intent.putExtra("paragraph2", homeDataModelArrayList.get(position).paragraph2);
-                    intent.putExtra("paragraph3", homeDataModelArrayList.get(position).paragraph3);
-                    intent.putExtra("paragraph4", homeDataModelArrayList.get(position).paragraph4);
-                    intent.putExtra("paragraph5", homeDataModelArrayList.get(position).paragraph5);
-                    intent.putExtra("paragraph6", homeDataModelArrayList.get(position).paragraph6);
-                    intent.putExtra("paragraph7", homeDataModelArrayList.get(position).paragraph7);
-                    intent.putExtra("paragraph8", homeDataModelArrayList.get(position).paragraph8);
+                    intent.putExtra("title", homeDataModelArrayList.get(position).getTitle());
+                    intent.putExtra("firstImageUrl", homeDataModelArrayList.get(position).getFirstImageUrl());
+                    intent.putExtra("secondImageUrl", homeDataModelArrayList.get(position).getSecondImageUrl());
+                    intent.putExtra("dateAndAuthor", homeDataModelArrayList.get(position).getDateAndAuthor());
+                    intent.putExtra("firstParagraph", homeDataModelArrayList.get(position).getFirstParagraph());
+                    intent.putExtra("secondParagraph", homeDataModelArrayList.get(position).getSecondParagraph());
+
                     context.getApplicationContext().startActivity(intent);
 
                 }
@@ -97,17 +92,17 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
 
             SpecialViewHolder specialViewHolder = (SpecialViewHolder) holder;
             specialViewHolder.specialButton.setText(homeDataModelArrayList.get(position).title);
-            Glide.with(context).load(homeDataModelArrayList.get(position).primaryImageUrl).transition(withCrossFade()).into(specialViewHolder.primaryImageView);
+            Glide.with(context).load(homeDataModelArrayList.get(position).getFirstImageUrl()).transition(withCrossFade()).into(specialViewHolder.primaryImageView);
 
             specialViewHolder.specialButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, homeDataModelArrayList.get(position).appLink, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, homeDataModelArrayList.get(position).getAppLink(), Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
             CountdownViewHolder countdownViewHolder = (CountdownViewHolder) holder;
-            countdownViewHolder.countdownTitle.setText(homeDataModelArrayList.get(position).title);
+            countdownViewHolder.countdownTitle.setText(homeDataModelArrayList.get(position).getTitle());
         }
 
 
