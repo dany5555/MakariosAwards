@@ -52,7 +52,7 @@ public class NomineesRecyclerviewAdapter extends RecyclerView.Adapter<NomineesRe
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NomineesRecyclerviewAdapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull NomineesRecyclerviewAdapter.ViewHolder viewHolder, final int i) {
 
         Typeface face = Typeface.createFromAsset(context.getAssets(), "optima_regular.ttf");
 
@@ -70,8 +70,10 @@ public class NomineesRecyclerviewAdapter extends RecyclerView.Adapter<NomineesRe
                 //Toast.makeText(context, "Member: " + nomineesModel.getFirstName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, BioActivity.class);
 
-                String memberUid = nomineesModel.getUid();
-                intent.putExtra("nomineeUid", memberUid);
+                intent.putExtra("pictureUrl", nomineesModel.getPictureUrl());
+                intent.putExtra("fullName", nomineesModel.getFullName());
+                intent.putExtra("age", nomineesModel.getAge());
+                intent.putExtra("nationality", nomineesModel.getNationality());
                 context.startActivity(intent);
             }
         });

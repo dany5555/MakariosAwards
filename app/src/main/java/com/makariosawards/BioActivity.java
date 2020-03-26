@@ -13,6 +13,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
+
 /**
  * This activity is responsible for displaying the personal bio information once a nominee is
  * selected from the NomineesActivity grid view.
@@ -23,27 +25,19 @@ public class BioActivity extends AppCompatActivity {
     ImageView nomineePicture;
     TextView nomineeName, nomineeRoll, nomineeAge, nomineeNationality;
 
-    // Declare database variables.
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference nomineeRef;
-
     // Declare string variable for later use.
-    String nomineeUid;
+    String fullName, pictureUrl, age, nationality;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bio_alternate);
 
-        /*
-        We use the passed data from the NomineesActivity intent and store it in their respective
-        variables for later use. In this case, the nomineeUid variable holds the id of the nominee
-        that was clicked on
-         */
-        nomineeUid = getIntent().getStringExtra("nomineeUid");
-
-        // Set the database reference.
-        nomineeRef = database.getReference("Nominees").child(nomineeUid);
+        // Get data sent from the intent.
+        fullName = getIntent().getStringExtra("fullName");
+        pictureUrl  = getIntent().getStringExtra("pictureUrl");
+        age = getIntent().getStringExtra("age");
+        nationality = getIntent().getStringExtra("nationality");
 
         // Casting UI elements.
         nomineePicture = findViewById(R.id.nominee_picture);
@@ -52,83 +46,16 @@ public class BioActivity extends AppCompatActivity {
         nomineeAge = findViewById(R.id.nominee_age);
         nomineeNationality = findViewById(R.id.nominee_nationality);
 
-        // Access database reference.
-        nomineeRef.child("fullName").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        // Set data to respective UI elements.
+        nomineeName.setText(fullName);
+        nomineeAge.setText(age);
+        nomineeNationality.setText(nationality);
+        Glide.with(this).load(pictureUrl).transition(withCrossFade()).into(nomineePicture);
 
-                // Set the text from the text view with data from database.
-                nomineeName.setText(dataSnapshot.getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        // Access database reference.
-        nomineeRef.child("pictureUrl").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                // Set the image from the url from the database.
-                Glide.with(getApplicationContext()).load(dataSnapshot.getValue().toString()).into(nomineePicture);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        // Access database reference.
-        nomineeRef.child("group").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                // Set the text from the text view with data from database.
-                nomineeRoll.setText(dataSnapshot.getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        // Access database reference.
-        nomineeRef.child("age").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                // Set the text from the text view with data from database.
-                nomineeAge.setText(dataSnapshot.getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        // Access database reference.
-        nomineeRef.child("nationality").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                // Set the text from the text view with data from database.
-                nomineeNationality.setText(dataSnapshot.getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
 
     }
+
+
 }
