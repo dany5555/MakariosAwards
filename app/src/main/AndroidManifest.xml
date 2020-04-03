@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewCastVoteActivity"></activity>
+        <activity android:name=".Relive2019FullAwardsActivity"></activity>
+        <activity android:name=".Relive2019NomineesActivity" />
+        <activity android:name=".Relive2019AwardsActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".NewCastVoteActivity" />
         <activity android:name=".AdminBetterNewActivity" />
         <activity android:name=".FullVotingStandingsActivity" />
         <activity android:name=".AdminBetterActivity" />
@@ -21,7 +25,7 @@
         <activity android:name=".AdminActivity" />
         <activity android:name=".AdminLoginActivity" />
         <activity android:name=".CastVoteActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Relive2019Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

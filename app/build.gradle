@@ -35,4 +35,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:16.1.0'
     implementation 'com.google.firebase:firebase-auth:16.1.0'
     //implementation 'com.github.razerdp:AnimatedPieView:1.2.5'
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
 }
