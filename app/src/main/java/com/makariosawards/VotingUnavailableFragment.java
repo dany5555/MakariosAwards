@@ -20,7 +20,6 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
  */
 public class VotingUnavailableFragment extends Fragment {
 
-    VideoView videoView;
 
 
 
@@ -34,21 +33,8 @@ public class VotingUnavailableFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.voting_not_availabe_layout, container, false);
 
-        YouTubePlayerView youTubePlayerView = view.findViewById(R.id.youTubePlayerView);
-        getLifecycle().addObserver(youTubePlayerView);
-
-        //videoView = view.findViewById(R.id.videoView);
-
-        //String videoPath = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.sheila;
-        //Uri uri = Uri.parse(videoPath);
-        //videoView.setVideoURI(uri);
-        //videoView.seekTo(13000);
-        //videoView.setBackground(getResources().getDrawable(R.drawable.ic_makarios_single_logo_light));
 
 
-        //MediaController mediaController = new MediaController(getActivity());
-        //videoView.setMediaController(mediaController);
-        //mediaController.setAnchorView(videoView);
 
 
 

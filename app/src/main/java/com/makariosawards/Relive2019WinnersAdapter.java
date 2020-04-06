@@ -38,7 +38,7 @@ public class Relive2019WinnersAdapter extends RecyclerView.Adapter<Relive2019Win
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Relive2019WinnersModel model = relive2019WinnersModelArrayList.get(position);
 
         holder.winnerTextView.setText(model.fullName);
@@ -49,6 +49,7 @@ public class Relive2019WinnersAdapter extends RecyclerView.Adapter<Relive2019Win
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Relive2019FullAwardsActivity.class);
+                intent.putExtra("category", categoriesList.get(position).categoryName);
                 context.startActivity(intent);
             }
         });

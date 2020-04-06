@@ -12,7 +12,7 @@
         <activity android:name=".Relive2019FullAwardsActivity"></activity>
         <activity android:name=".Relive2019NomineesActivity" />
         <activity android:name=".Relive2019AwardsActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".NewCastVoteActivity" />
         <activity android:name=".AdminBetterNewActivity" />
         <activity android:name=".FullVotingStandingsActivity" />
@@ -25,14 +25,14 @@
         <activity android:name=".AdminActivity" />
         <activity android:name=".AdminLoginActivity" />
         <activity android:name=".CastVoteActivity" />
-        <activity android:name=".Relive2019Activity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".Relive2019Activity" />
         <activity android:name=".NomineesActivity" />
         <activity android:name=".BioActivity" />
         <activity android:name=".VotingActivity" />

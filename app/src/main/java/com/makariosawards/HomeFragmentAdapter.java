@@ -98,6 +98,9 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(context, homeDataModelArrayList.get(position).getAppLink(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, Relive2019Activity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.getApplicationContext().startActivity(intent);
                 }
             });
         } else {

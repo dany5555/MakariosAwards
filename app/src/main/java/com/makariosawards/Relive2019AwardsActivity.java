@@ -56,8 +56,8 @@ public class Relive2019AwardsActivity extends AppCompatActivity {
             JSONObject obj = new JSONObject(loadJSON("categories.json"));
             JSONArray categories = obj.getJSONArray("Categories");
 
-            //int j = categories.length();
-            //Log.e("lol","Categories: " + j);
+            int j = categories.length();
+            Log.e("lol","Categories: " + j);
 
             for (int i = 0; i < categories.length(); i++) {
                 JSONObject objc = categories.getJSONObject(i);
@@ -73,8 +73,8 @@ public class Relive2019AwardsActivity extends AppCompatActivity {
             relive2019WinnersModelArrayList = new ArrayList<>();
             JSONObject obj = new JSONObject(loadJSON(jsonFileName));
             JSONArray winners = obj.getJSONArray(categoryName);
-            int j = winners.length();
-            Log.e("lol","Object length: " + j);
+            //int j = winners.length();
+            //Log.e("lol","Object length: " + j);
 
             for (int i = 0; i < winners.length(); i++) {
                 JSONObject objc = winners.getJSONObject(i);

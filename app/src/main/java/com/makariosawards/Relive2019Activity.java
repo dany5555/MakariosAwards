@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
-public class Relive2019Activity extends AppCompatActivity {
+public class    Relive2019Activity extends AppCompatActivity {
 
     Toolbar toolbar;
     Button reliveButton, nominees2019Button;
