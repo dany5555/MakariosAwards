@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/nominee_picture"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/optima_regular"
         android:text="NATHANAEL"
         android:textAllCaps="true"
         android:textColor="@android:color/black"

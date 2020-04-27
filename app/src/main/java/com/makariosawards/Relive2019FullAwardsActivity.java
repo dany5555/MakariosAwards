@@ -9,6 +9,8 @@ import android.util.Log;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import org.json.JSONArray;
@@ -27,6 +29,7 @@ public class Relive2019FullAwardsActivity extends AppCompatActivity {
     TextView categoryTitle;
     ArrayList<Relive2019WinnersModel> fullList;
     String category;
+    String videoLink;
     //ScrollView scrollView;
 
     @Override
@@ -35,6 +38,7 @@ public class Relive2019FullAwardsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_relive2019_full_awards);
 
         category = getIntent().getStringExtra("category");
+        videoLink = getIntent().getStringExtra("videoLink");
         Log.e("lol", "category name: " + category);
 
 
@@ -44,6 +48,16 @@ public class Relive2019FullAwardsActivity extends AppCompatActivity {
         //scrollView = findViewById(R.id.scrollView);
         youTubePlayerView = findViewById(R.id.player);
         getLifecycle().addObserver(youTubePlayerView);
+
+        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(YouTubePlayer youTubePlayer) {
+                youTubePlayer.loadVideo(videoLink, 0);
+            }
+        });
+        youTubePlayerView.setEnableAutomaticInitialization(false);
+
+
         //scrollView.setVerticalScrollBarEnabled(false);
         //recyclerView.setNestedScrollingEnabled(false);
 

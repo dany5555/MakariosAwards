@@ -26,9 +26,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoryTitle"
-        app:showFullScreenButton="false"
-        app:useWebUi="false"
-        app:videoId="s2FckT8GT3Q" />
+        app:showFullScreenButton="true"
+        app:videoId="bS6a4Fp29mU"
+        app:useWebUi="false"/>
 
     <TextView
         android:id="@+id/categoryTitle"

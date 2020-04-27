@@ -33,8 +33,8 @@ public class VoteFragment extends Fragment {
     ArrayList<AdminMainModel> adminMainModelArrayList = new ArrayList<>();
     AdminMainModel adminMainModel;
 
-    String uid;
-    HomeActivity homeActivity;
+    //String uid;
+    //HomeActivity homeActivity;
 
     public VoteFragment() {
         // Required empty public constructor
@@ -47,14 +47,14 @@ public class VoteFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_vote, container, false);
 
-        homeActivity = (HomeActivity) getActivity();
-        uid = homeActivity.getUid();
+        //homeActivity = (HomeActivity) getActivity();
+        //uid = homeActivity.getUid();
 
         recyclerView = view.findViewById(R.id.recyclerview);
 
         adminMainModel = new AdminMainModel();
 
-        ref.addValueEventListener(new ValueEventListener() {
+        /*ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (recyclerView.getAdapter() == null) {
@@ -76,9 +76,9 @@ public class VoteFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
-        voteCategoryListAdapter = new VoteCategoryListAdapter(adminMainModelArrayList, getActivity(), uid);
+        //voteCategoryListAdapter = new VoteCategoryListAdapter(adminMainModelArrayList, getActivity(), uid);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(voteCategoryListAdapter);

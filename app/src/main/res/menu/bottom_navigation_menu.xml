@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/vote_section"
+        android:id="@+id/relive_section"
         android:enabled="true"
-        android:title="Vote"
-        android:icon="@drawable/ic_vote"
+        android:title="Relive"
+        android:icon="@drawable/relive"
         app:showAsAction="withText"/>
 
     <item

@@ -22,6 +22,7 @@ public class Relive2019AwardsActivity extends AppCompatActivity {
     ArrayList<Relive2019WinnersModel> relive2019WinnersModelArrayList;
     ArrayList<Relive2019WinnersModel> finalList;
     ArrayList<Relive2019CategoriesModel> categoriesList;
+    ArrayList<VideoLinksModel> videoLinksList;
 
 
     @Override
@@ -33,8 +34,10 @@ public class Relive2019AwardsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         finalList = new ArrayList<>();
         categoriesList = new ArrayList<>();
+        videoLinksList = new ArrayList<>();
 
         getCategoriesJSON();
+        getVideoLinksJSON();
 
         getJSON(recyclerView, "Best Directiva Member", "fullStandings2019.json");
         getJSON(recyclerView, "Best Gringo", "fullStandings2019.json");
@@ -48,7 +51,7 @@ public class Relive2019AwardsActivity extends AppCompatActivity {
         getJSON(recyclerView, "Quietest", "fullStandings2019.json");
         getJSON(recyclerView, "Sleepiest", "fullStandings2019.json");
 
-        recyclerView.setAdapter(new Relive2019WinnersAdapter(finalList, categoriesList, this));
+        recyclerView.setAdapter(new Relive2019WinnersAdapter(finalList, categoriesList, videoLinksList, this));
     }
 
     public void getCategoriesJSON() {
@@ -62,6 +65,23 @@ public class Relive2019AwardsActivity extends AppCompatActivity {
             for (int i = 0; i < categories.length(); i++) {
                 JSONObject objc = categories.getJSONObject(i);
                 categoriesList.add(new Relive2019CategoriesModel(objc));
+            }
+        } catch (JSONException e) {
+
+        }
+    }
+
+    public void getVideoLinksJSON() {
+        try {
+            JSONObject obj = new JSONObject(loadJSON("videoLinks.json"));
+            JSONArray videoLinks = obj.getJSONArray("VideoLinks");
+
+            int j = videoLinks.length();
+            Log.e("lol","Categories: " + j);
+
+            for (int i = 0; i < videoLinks.length(); i++) {
+                JSONObject objc = videoLinks.getJSONObject(i);
+                videoLinksList.add(new VideoLinksModel(objc));
             }
         } catch (JSONException e) {
 

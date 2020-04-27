@@ -20,16 +20,17 @@ import com.google.firebase.database.ValueEventListener;
 
 public class HomeActivity extends AppCompatActivity {
 
-    String nomineeUid;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference loggedInRef = database.getReference("Nominees");
+    //String nomineeUid;
+    //FirebaseDatabase database = FirebaseDatabase.getInstance();
+    //DatabaseReference loggedInRef = database.getReference("Nominees");
 
     BottomNavigationView bottomNavigationView;
     Toolbar toolbar;
-    VoteFragment voteFragment;
+    //VoteFragment voteFragment;
     HomeFragment homeFragment;
     NomineesFragment nomineesFragment;
-    VotingUnavailableFragment votingUnavailableFragment;
+    ReliveFragment reliveFragment;
+    //VotingUnavailableFragment votingUnavailableFragment;
 
 
 
@@ -38,14 +39,15 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        getUid();
+        //getUid();
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         toolbar = findViewById(R.id.toolbar);
-        voteFragment = new VoteFragment();
+        //voteFragment = new VoteFragment();
         homeFragment = new HomeFragment();
         nomineesFragment = new NomineesFragment();
-        votingUnavailableFragment = new VotingUnavailableFragment();
+        reliveFragment = new ReliveFragment();
+        //votingUnavailableFragment = new VotingUnavailableFragment();
 
         setSupportActionBar(toolbar);
 
@@ -61,8 +63,8 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.vote_section :
-                        setFragment(votingUnavailableFragment);
+                    case R.id.relive_section :
+                        setFragment(reliveFragment);
                         return true;
                     case R.id.home_section :
                         setFragment(homeFragment);
@@ -79,10 +81,10 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.home_section);
 
 
-        nomineeUid = getIntent().getStringExtra("id");
+        //nomineeUid = getIntent().getStringExtra("id");
 
         // Displays the firstName of the person that is currently logged in.
-        loggedInRef.child(nomineeUid).child("firstName").addListenerForSingleValueEvent(new ValueEventListener() {
+        /*loggedInRef.child(nomineeUid).child("firstName").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //welcomeText.setText("Welcome " + dataSnapshot.getValue().toString());
@@ -92,22 +94,22 @@ public class HomeActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
 
     }
 
-    public void editProfile(MenuItem menuItem) {
+    /*public void editProfile(MenuItem menuItem) {
         Intent intent = new Intent(getApplicationContext(), EditProfileActivity.class);
         intent.putExtra("nomineeUid", nomineeUid);
         startActivity(intent);
-    }
+    }*/
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.action_menu_layout, menu);
         return true;
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
@@ -120,9 +122,9 @@ public class HomeActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public String getUid() {
+    /*public String getUid() {
         nomineeUid = getIntent().getStringExtra("id");
         return nomineeUid;
 
-    }
+    }*/
 }

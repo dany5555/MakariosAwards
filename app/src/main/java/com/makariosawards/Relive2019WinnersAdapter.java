@@ -22,11 +22,13 @@ public class Relive2019WinnersAdapter extends RecyclerView.Adapter<Relive2019Win
 
     ArrayList<Relive2019WinnersModel> relive2019WinnersModelArrayList;
     ArrayList<Relive2019CategoriesModel> categoriesList;
+    ArrayList<VideoLinksModel> videoLinksList;
     Context context;
 
-    public Relive2019WinnersAdapter(ArrayList<Relive2019WinnersModel> relive2019WinnersModelArrayList, ArrayList<Relive2019CategoriesModel> categoriesList, Context context) {
+    public Relive2019WinnersAdapter(ArrayList<Relive2019WinnersModel> relive2019WinnersModelArrayList, ArrayList<Relive2019CategoriesModel> categoriesList, ArrayList<VideoLinksModel> videoLinksList, Context context) {
         this.relive2019WinnersModelArrayList = relive2019WinnersModelArrayList;
         this.categoriesList = categoriesList;
+        this.videoLinksList = videoLinksList;
         this.context = context;
     }
 
@@ -50,6 +52,7 @@ public class Relive2019WinnersAdapter extends RecyclerView.Adapter<Relive2019Win
             public void onClick(View view) {
                 Intent intent = new Intent(context, Relive2019FullAwardsActivity.class);
                 intent.putExtra("category", categoriesList.get(position).categoryName);
+                intent.putExtra("videoLink", videoLinksList.get(position).videoLink);
                 context.startActivity(intent);
             }
         });
