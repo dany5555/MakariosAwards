@@ -68,7 +68,6 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
             ArticleViewHolder articleViewHolder = (ArticleViewHolder) holder;
             articleViewHolder.titleTextView.setText(homeDataModelArrayList.get(position).title);
             Glide.with(context).load(homeDataModelArrayList.get(position).getFirstImageUrl()).transition(withCrossFade()).into(articleViewHolder.primaryImageView);
-
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
